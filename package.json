@@ -1,0 +1,38 @@
+{
+  "name": "node-git-deployor",
+  "version": "0.0.0",
+  "description": "A git pusher helper in node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/douglasduteil/node-git-deployor.git"
+  },
+  "keywords": [
+    "node",
+    "git",
+    "deployor",
+    "deploy",
+    "tag",
+    "commit",
+    "push",
+    "orphan",
+    "travis-ci",
+    "github",
+    "release",
+    "publish"
+  ],
+  "author": "Douglas Duteil",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/douglasduteil/node-git-deployor/issues"
+  },
+  "homepage": "https://github.com/douglasduteil/node-git-deployor",
+  "dependencies": {
+    "lodash.assign": "^2.4.1",
+    "shelljs": "^0.3.0",
+    "snake-case": "^1.0.1"
+  }
+}
