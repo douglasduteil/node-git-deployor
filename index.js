@@ -47,7 +47,7 @@ var e = Deployor.exec = function (cmd) {
 
 Deployor.cloneRepoBranch = function cloneRepoBranch(options) {
 
-  options.cloneLocation = path.resolve(path.join(process.cwd(), options.cloneLocation));
+  options.cloneLocation = path.resolve(options.cloneLocation);
 
   var res;
 
@@ -55,8 +55,8 @@ Deployor.cloneRepoBranch = function cloneRepoBranch(options) {
   res = e('git config --get remote.origin.url');
   if (res.code > 0) throw new Error('Can\'t get no remote.origin.url !');
 
-  process.env.repoUrl = process.env.REPO || String(res.output).split(/[\n\r]/).shift();
-  if (!process.env.repoUrl) throw new Error('No repo link !');
+  options.repoUrl = process.env.REPO || String(res.output).split(/[\n\r]/).shift();
+  if (!options.repoUrl) throw new Error('No repo link !');
 
   ///
 
