@@ -1,8 +1,6 @@
 'use strict';
 
 var path = require('path');
-var fs = require('fs');
-
 var _assign = require('lodash.assign');
 var sh = require('shelljs');
 var snakeCase = require('snake-case');
@@ -49,7 +47,7 @@ var e = Deployor.exec = function (cmd) {
 
 Deployor.cloneRepoBranch = function cloneRepoBranch(options) {
 
-  options.destPath = path.resolve(path.join(process.cwd(), options.destPath));
+  options.cloneLocation = path.resolve(path.join(process.cwd(), options.cloneLocation));
 
   var res;
 
@@ -84,11 +82,11 @@ Deployor.cloneRepoBranch = function cloneRepoBranch(options) {
 
   ///
 
-  // Go to the cloneLocation aka destPath
-  sh.cd(options.destPath);
+  // Go to the cloneLocation
+  sh.cd(options.cloneLocation);
 
-  if (sh.pwd() !== options.destPath) {
-    throw new Error('Can\'t access to the clone location : ' + options.destPath + ' from ' + sh.pwd());
+  if (sh.pwd() !== options.cloneLocation) {
+    throw new Error('Can\'t access to the clone location : ' + options.cloneLocation + ' from ' + sh.pwd());
   }
 
   e('git clean -f -d');
