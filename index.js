@@ -26,14 +26,15 @@ function Deployor(options) {
   );
 
   // TODO move this
-  Object.keys(process.env).forEach(function (key) {
-    process.env[snakeCase(key).toUpperCase()] = process.env[key];
-  });
+  Object.keys(this.options).forEach(function (key) {
+    process.env[snakeCase(key).toUpperCase()] = this.options[key];
+  }.bind(this));
 
 }
 
 Deployor.defaults = {
-  cwd : process.cwd()
+  cwd : process.cwd(),
+  branch: 'master'
 };
 
 
@@ -48,13 +49,12 @@ var e = Deployor.exec = function (cmd) {
 
 Deployor.cloneRepoBranch = function cloneRepoBranch(branchName, destPath, options) {
 
-  destPath = path.resolve(path.join(cwd, destPath));
+  destPath = path.resolve(path.join(process.cwd(), destPath));
 
-  _assign(process.env, {
+  _assign(options, {
     branch: branchName,
     cloneLocation: destPath
   });
-
 
   var res;
 
@@ -68,8 +68,8 @@ Deployor.cloneRepoBranch = function cloneRepoBranch(branchName, destPath, option
   ///
 
   // TODO move this
-  Object.keys(process.env).forEach(function (key) {
-    process.env[changeCase.snakeCase(key).toUpperCase()] = process.env[key];
+  Object.keys(options).forEach(function (key) {
+    process.env[snakeCase(key).toUpperCase()] = options[key];
   });
 
   ///
@@ -135,9 +135,10 @@ Deployor.prototype = {
   tag: function (tagMessage) {
     process.env.TAG_MESSAGE = tagMessage;
     var res = e('git tag $TAG_MESSAGE');
-    if (res.code > 0) console.log('Can\'t tag failed, continuing !');
+    if (res && res.code > 0) console.log('Can\'t tag failed, continuing !');
   },
   push: function () {
-    e('git push --tags origin $BRANCH');
+    var res = e('git push --tags origin $BRANCH');
+    if (res && res.code > 0) throw new Error(res.output);
   }
 };
