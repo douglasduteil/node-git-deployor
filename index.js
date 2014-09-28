@@ -47,14 +47,9 @@ var e = Deployor.exec = function (cmd) {
   return sh.exec(cmd);
 };
 
-Deployor.cloneRepoBranch = function cloneRepoBranch(branchName, destPath, options) {
+Deployor.cloneRepoBranch = function cloneRepoBranch(options) {
 
-  destPath = path.resolve(path.join(process.cwd(), destPath));
-
-  _assign(options, {
-    branch: branchName,
-    cloneLocation: destPath
-  });
+  options.destPath = path.resolve(path.join(process.cwd(), options.destPath));
 
   var res;
 
@@ -90,10 +85,10 @@ Deployor.cloneRepoBranch = function cloneRepoBranch(branchName, destPath, option
   ///
 
   // Go to the cloneLocation aka destPath
-  sh.cd(destPath);
+  sh.cd(options.destPath);
 
-  if (sh.pwd() !== destPath) {
-    throw new Error('Can\'t access to the clone location : ' + destPath + ' from ' + sh.pwd());
+  if (sh.pwd() !== options.destPath) {
+    throw new Error('Can\'t access to the clone location : ' + options.destPath + ' from ' + sh.pwd());
   }
 
   e('git clean -f -d');
