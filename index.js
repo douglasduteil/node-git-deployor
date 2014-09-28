@@ -37,12 +37,13 @@ Deployor.defaults = {
 
 
 Deployor.verbose = false;
+sh.config.silent = !Deployor.verbose;
 
 var e = Deployor.exec = function (cmd) {
   if (Deployor.verbose) {
     console.log('$ ', cmd);
   }
-  return sh.exec(cmd + Deployor.verbose ? '' : ' &> /dev/null');
+  return sh.exec(cmd);
 };
 
 Deployor.cloneRepoBranch = function cloneRepoBranch(options) {
@@ -131,7 +132,7 @@ Deployor.prototype = {
     if (res && res.code > 0) console.log('Can\'t tag failed, continuing !');
   },
   push: function () {
-    var res = e('git push --tags origin $BRANCH' + Deployor.verbose ? '' : ' &> /dev/null');
+    var res = e('git push --tags origin $BRANCH');
     if (res && res.code > 0) throw new Error(res.output);
   }
 };
