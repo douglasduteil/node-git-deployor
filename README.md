@@ -13,6 +13,38 @@ $ npm install --save-dev node-git-deployor
 
 ```js
 
+'use strict';
+
+var pkg = require('package.json');
+
+var Deployor = require('node-git-deployor');
+
+function publishBuiltFiles() {
+
+  var distWorkspace = Deployor.cloneRepoBranch({
+    orphan: true,
+    branch: 'dist',
+    cloneLocation: '/tmp/dist'
+  });
+
+  distWorkspace.extraCleanUp();
+  distWorkspace.copy('./dist');
+  distWorkspace.commit('Update ' + new Date().toISOString());
+  distWorkspace.tag('v' + pkg.version);
+  distWorkspace.push();
+
+}
+
+
+function publishNewSourceRelease() {
+
+  var srcWorkspace = new Deployor();
+  srcWorkspace.commit('chore(release): v' + pkg.version);
+  srcWorkspace.tag('src' + pkg.version);
+  srcWorkspace.push();
+
+}
+
 ```
 
 

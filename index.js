@@ -108,7 +108,7 @@ Deployor.cloneRepoBranch = function cloneRepoBranch(options) {
 };
 
 Deployor.prototype = {
-  extraClean: function () {
+  extraCleanUp: function () {
     // Empty the clone
     e('git rm --ignore-unmatch -rfq \'\\.[^\\.]*\' *');
   },
