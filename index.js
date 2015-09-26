@@ -29,7 +29,7 @@ function Deployor (options) {
 }
 
 Deployor.defaults = {
-  cwd : process.cwd(),
+  cwd: process.cwd(),
   branch: 'master'
 }
 
