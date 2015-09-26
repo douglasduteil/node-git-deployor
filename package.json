@@ -34,7 +34,8 @@
   "dependencies": {
     "lodash.assign": "^3.2.0",
     "shelljs": "^0.5.3",
-    "snake-case": "^1.1.1"
+    "snake-case": "^1.1.1",
+    "yargs": "^3.26.0"
   },
   "devDependencies": {
     "eslint": "^1.5.1",
