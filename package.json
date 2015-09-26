@@ -4,7 +4,7 @@
   "description": "A git pusher helper in node",
   "main": "index.js",
   "scripts": {
-    "test": "npm run lint",
+    "test": "npm run lint --silent",
     "lint": "eslint index.js"
   },
   "repository": {
