@@ -55,19 +55,19 @@ Deployor.cloneRepoBranch = function cloneRepoBranch (options) {
   options.repoUrl = process.env.REPO || String(res.output).split(/[\n\r]/).shift()
   if (!options.repoUrl) throw new Error('No repo link !')
 
-  ///
+  //
 
   // TODO move this
   Object.keys(options).forEach(function (key) {
     process.env[snakeCase(key).toUpperCase()] = options[key]
   })
 
-  ///
+  //
 
   // Remove tmp file
   e('rm -rf $CLONE_LOCATION')
 
-  ///
+  //
 
   // Clone the repo branch to a special location (clonedRepoLocation)
   res = e('git clone --branch=$BRANCH --single-branch $REPO_URL $CLONE_LOCATION')
@@ -77,7 +77,7 @@ Deployor.cloneRepoBranch = function cloneRepoBranch (options) {
     if (res.code > 0) throw new Error('Can\'t clone !')
   }
 
-  ///
+  //
 
   // Go to the cloneLocation
   sh.cd(options.cloneLocation)
