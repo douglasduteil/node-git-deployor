@@ -16,7 +16,6 @@ module.exports = Deployor
  * @constructor
  */
 function Deployor (options) {
-
   this.options = _assign(
     {},
     Deployor.defaults,
@@ -27,14 +26,12 @@ function Deployor (options) {
   Object.keys(this.options).forEach(function (key) {
     process.env[snakeCase(key).toUpperCase()] = this.options[key]
   }.bind(this))
-
 }
 
 Deployor.defaults = {
   cwd : process.cwd(),
   branch: 'master'
 }
-
 
 Deployor.verbose = false
 sh.config.silent = !Deployor.verbose
@@ -47,7 +44,6 @@ var e = Deployor.exec = function (cmd) {
 }
 
 Deployor.cloneRepoBranch = function cloneRepoBranch (options) {
-
   options.cloneLocation = path.resolve(options.cloneLocation)
 
   var res
