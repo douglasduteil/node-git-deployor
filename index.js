@@ -15,7 +15,7 @@ module.exports = Deployor
  *
  * @constructor
  */
-function Deployor(options) {
+function Deployor (options) {
 
   this.options = _assign(
     {},
@@ -46,7 +46,7 @@ var e = Deployor.exec = function (cmd) {
   return sh.exec(cmd)
 }
 
-Deployor.cloneRepoBranch = function cloneRepoBranch(options) {
+Deployor.cloneRepoBranch = function cloneRepoBranch (options) {
 
   options.cloneLocation = path.resolve(options.cloneLocation)
 
