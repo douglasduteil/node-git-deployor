@@ -38,7 +38,10 @@ sh.config.silent = !Deployor.verbose
 
 var e = Deployor.exec = function (cmd) {
   if (Deployor.verbose) {
-    console.log('$ ', cmd)
+    var realCmd = cmd.replace(/\$(\S+)/g, function (match, envKey) {
+      return process.env[envKey] || '$' + envKey
+    })
+    console.log('$ ', realCmd)
   }
   return sh.exec(cmd)
 }
