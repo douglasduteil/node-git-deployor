@@ -47,6 +47,71 @@ function publishNewSourceRelease() {
 
 ```
 
+## API
+
+### new Deployor([options])
+
+#### options
+
+Type: `Object`
+
+Options to pass to the Deployor.
+
+#### options.cwd
+
+Type: `String`
+Default: `process.cwd()`  
+
+`cwd` of the input folder
+
+#### options.branch
+
+Type: `String`
+Default: `master`
+
+The branch to deploy to.
+
+#### options.orphan
+
+Type: `Boolean`
+Default: `false`
+
+Setting this to `true` will force the use of a orphan branch for the deployment. 
+
+- *TODO(douglasduteil): confirm this*
+
+#### options.cloneLocation
+
+Type: `String`
+Default: `path.join('/', 'tmp', path.basename(process.cwd()))`
+
+The path where the temporal deployed file will be cloned.
+
+### Deployor instance `deployor`
+
+#### deployor.extraCleanUp
+
+- *TODO(douglasduteil): document this*
+
+#### deployor.copy
+
+- *TODO(douglasduteil): document this*
+
+#### deployor.commit
+
+- *TODO(douglasduteil): document this*
+
+#### deployor.tag
+
+- *TODO(douglasduteil): document this*
+
+#### deployor.push
+
+- *TODO(douglasduteil): document this*
+
+### Deployor.cloneRepoBranch([options])
+
+- *TODO(douglasduteil): document this*
 
 ## License
 
