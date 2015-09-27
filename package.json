@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "A git pusher helper in node",
   "main": "index.js",
+  "bin": {
+    "ngd": "./bin/node-git-deployor.js"
+  },
   "scripts": {
     "test": "npm run lint --silent",
     "lint": "eslint index.js"
@@ -33,6 +36,7 @@
   "homepage": "https://github.com/douglasduteil/node-git-deployor",
   "dependencies": {
     "lodash.assign": "^3.2.0",
+    "lodash.defaults": "^3.1.2",
     "shelljs": "^0.5.3",
     "snake-case": "^1.1.1",
     "yargs": "^3.26.0"
