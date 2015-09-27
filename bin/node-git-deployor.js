@@ -41,6 +41,11 @@ var argv = yargs
     describe: 'Push the result',
     type: 'boolean'
   })
+  // --tag
+  .option('tag', {
+    default: false,
+    describe: 'Tag the deployed commit'
+  })
   // --verbose
   .option('verbose', {
     default: true,
