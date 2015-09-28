@@ -48,7 +48,7 @@ var argv = yargs
   })
   // --verbose
   .option('verbose', {
-    default: true,
+    default: false,
     nargs: 0,
     type: 'boolean'
   })
