@@ -1,6 +1,6 @@
 {
   "name": "node-git-deployor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A git pusher helper in node",
   "main": "index.js",
   "bin": {
